@@ -251,7 +251,7 @@
             font-weight: 200;
             line-height: 1.1;
             margin-bottom: 24px;
-            letter-spacing: -2px;
+            letter-spacing: 0.5px;
             animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
@@ -281,12 +281,15 @@
         .hero-stats {
             display: flex;
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 8px;
             animation: fadeInUp 0.8s ease-out 0.6s both;
+            justify-content: flex-start;
+            flex-wrap: wrap;
         }
 
         .hero-stat {
             text-align: left;
+            flex-shrink: 0;
         }
 
         .stat-number {
@@ -376,7 +379,7 @@
 
         .form-group select {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 10.5l-4-4h8l-4 4z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='bhttp://www.w3.org/2000/svg' width='16' height='16' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 10.5l-4-4h8l-4 4z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 20px center;
             padding-right: 50px;
@@ -738,9 +741,9 @@
             font-weight: 700;
             margin-right: 12px;
             font-size: 16px;
-        }
+            }
 
-        .pricing-cta {
+            .pricing-cta {
             display: block;
             padding: 18px 36px;
             border-radius: 50px;
@@ -1203,25 +1206,38 @@
             .nav-container {
                 padding: 0 20px;
             }
-
+            
             .nav-links {
                 display: none;
             }
-
+            
             .mobile-menu-btn {
                 display: block;
             }
-
+            
             .hero {
-                padding: 120px 0 80px;
+                padding: 100px 0 60px;
+                min-height: 80vh;
             }
-
+            
             .hero-container {
                 padding: 0 20px;
+                gap: 40px;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+                margin-bottom: 16px;
             }
 
+            .hero-description {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+            
             .hero-form {
-                padding: 32px 24px;
+                padding: 24px 20px;
+                max-width: 380px;
             }
 
             .form-header h3 {
@@ -1229,9 +1245,26 @@
             }
 
             .hero-stats {
-                flex-direction: column;
-                gap: 24px;
-                text-align: center;
+                flex-direction: row !important;
+                gap: 20px !important;
+                margin-bottom: 10px !important;
+                justify-content: space-between;
+            }
+
+            .hero-stat {
+                text-align: center !important;
+                flex: 1;
+                min-width: 0;
+            }
+
+            .hero-stat .stat-number {
+                font-size: 24px !important;
+                margin-bottom: 2px !important;
+            }
+
+            .hero-stat .stat-label {
+                font-size: 10px !important;
+                line-height: 1.2 !important;
             }
 
             .partners-grid {
@@ -1239,13 +1272,41 @@
                 gap: 20px;
             }
 
+            /* FORCE COMPACT STATS ON ALL MOBILE SIZES */
+            .stats-section {
+                padding: 50px 0 35px !important;
+            }
+
+            .stats-header {
+                margin-bottom: 30px !important;
+            }
+
+            .stats-header h2 {
+                font-size: 28px !important;
+            }
+
+            .stats-header p {
+                font-size: 15px !important;
+            }
+
             .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 12px !important;
+            }
+
+            .stat-card {
+                padding: 16px 8px !important;
+                text-align: center;
             }
 
             .stat-card .stat-number {
-                font-size: 48px;
+                font-size: 24px !important;
+                margin-bottom: 4px !important;
+            }
+
+            .stat-card .stat-label {
+                font-size: 9px !important;
+                line-height: 1.2 !important;
             }
 
             .section-title {
@@ -1268,18 +1329,70 @@
                 text-align: center;
             }
         }
-
+        
         @media (max-width: 480px) {
-            .hero-title {
-                font-size: 36px;
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
             }
 
+            .stat-card {
+                padding: 12px 6px;
+            }
+
+            .stat-card .stat-number {
+                font-size: 20px;
+                margin-bottom: 2px;
+            }
+
+            .stat-card .stat-label {
+                font-size: 8px;
+                line-height: 1.1;
+            }
+
+            .stats-header h2 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .stats-header {
+                margin-bottom: 25px;
+            }
+
+            .stats-section {
+                padding: 40px 0 25px;
+            }
+
+            .hero-title {
+            font-size: 28px;
+            }
+            
             .hero-description {
-                font-size: 18px;
+            font-size: 15px;
             }
 
             .form-header h3 {
-                font-size: 20px;
+            font-size: 18px;
+            }
+
+            .hero-form {
+                max-width: 320px;
+                padding: 20px 16px;
+            }
+
+            .hero-stats {
+                gap: 15px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .hero-stat .stat-number {
+                font-size: 20px !important;
+                margin-bottom: 1px !important;
+            }
+
+            .hero-stat .stat-label {
+                font-size: 8px !important;
+                line-height: 1.1 !important;
             }
 
             .partners-grid {
@@ -1330,67 +1443,77 @@
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">Elite Property Management</div>
-                <h1 class="hero-title">
-                    Turn Your Property Into A 
-                    <span class="gradient">Revenue PowerHouse</span>
-                </h1>
-                <p class="hero-description">
-                    Earn 35% more with our data-driven pricing strategies and white-glove customer service. Maximum returns, minimum effort.
-                </p>
-                
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <span class="stat-number">35%</span>
-                        <span class="stat-label">Higher Revenue</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="stat-number">4.9★</span>
-                        <span class="stat-label">Guest Rating</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Properties</span>
-                    </div>
+            <div class="hero-badge">Elite Marketing and Revenue Management</div>
+            <h1 class="hero-title">
+                <span class="gradient">200+ Owners</span> Already Earning 
+                35% More Revenue
+            </h1>
+            <p class="hero-description">
+                    Earn 35% more with our AI-powered pricing that adjusts daily to market demand and 24/7 guest support that handles everything from check-ins to maintenance requests. Maximum returns, minimum effort.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-number">35%</span>
+                    <span class="stat-label">Higher Revenue</span>
                 </div>
-            </div>
+                <div class="hero-stat">
+                    <span class="stat-number">4.9★</span>
+                    <span class="stat-label">Guest Rating</span>
+                </div>
+                                    <div class="hero-stat">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Properties</span>
+                </div>
+                </div>
+                </div>
 
             <!-- Hero Form -->
             <div class="hero-form">
                 <div class="form-header">
                     <h3>Get Your Free Analysis</h3>
                     <p>See your earning potential in 24 hours</p>
-                </div>
-                <form id="heroForm">
+            </div>
+                <form id="heroForm" name="property-analysis" data-netlify="true" data-netlify-honeypot="honeypot">
                     <div class="form-group">
-                        <label>Property Location</label>
-                        <input type="text" placeholder="City, State" required>
+                        <label>Full Name *</label>
+                        <input type="text" name="fullName" placeholder="Your full name" required>
                     </div>
                     <div class="form-group">
-                        <label>Property Type</label>
-                        <select required>
-                            <option value="">Select type</option>
-                            <option>House</option>
-                            <option>Condo</option>
-                            <option>Townhouse</option>
-                            <option>Villa</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Bedrooms</label>
-                        <select required>
-                            <option value="">Select bedrooms</option>
-                            <option>1 BR</option>
-                            <option>2 BR</option>
-                            <option>3 BR</option>
-                            <option>4+ BR</option>
-                        </select>
+                        <label>Phone Number *</label>
+                        <input type="tel" name="phone" placeholder="(555) 123-4567" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" placeholder="your@email.com" required>
+                        <input type="email" name="email" placeholder="your@email.com">
+            </div>
+
+                    <div class="form-group">
+                        <label>How many bedrooms does your home have? *</label>
+                        <select name="bedrooms" required>
+                            <option value="">Select bedrooms</option>
+                            <option>1 bedroom</option>
+                            <option>2 bedrooms</option>
+                            <option>3 bedrooms</option>
+                            <option>4 bedrooms</option>
+                            <option>5+ bedrooms</option>
+                        </select>
                     </div>
-                    <button type="submit" class="form-submit">Get My Analysis</button>
+                    <div class="form-group">
+                        <label>What is 2 + 3? *</label>
+                        <input type="number" name="botCheck" placeholder="Enter the answer" required min="5" max="5">
+                        <small style="color: var(--gray); font-size: 12px; margin-top: 4px; display: block;">Simple math question to prevent spam</small>
+                    </div>
+                    <!-- Honeypot field for spam prevention -->
+                    <div style="position: absolute; left: -5000px;">
+                        <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
+                    </div>
+                    <!-- Hidden field to redirect to admin email -->
+                    <input type="hidden" name="_email" value="admin@luxurylodgingpm.com">
+                    <input type="hidden" name="_subject" value="New Property Analysis Request">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you">
+                    
+                    <button type="submit" class="form-submit">Get My Free Analysis</button>
                     <p class="form-note">Free • No obligation • 24hr response</p>
                 </form>
             </div>
@@ -1402,38 +1525,38 @@
         <div class="partners-container">
             <p class="partners-label">Listed on All Major Platforms</p>
             <div class="partners-grid">
-                <div class="partner-logo">
-                    <svg width="80" height="30" viewBox="0 0 80 30">
-                        <text x="40" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FF5A5F">airbnb</text>
-                    </svg>
-                </div>
-                <div class="partner-logo">
-                    <svg width="60" height="30" viewBox="0 0 60 30">
-                        <text x="30" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#006C70">VRBO</text>
-                    </svg>
-                </div>
-                <div class="partner-logo">
-                    <svg width="110" height="30" viewBox="0 0 110 30">
-                        <text x="55" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#003580">BOOKING.COM</text>
-                    </svg>
-                </div>
-                <div class="partner-logo">
+                    <div class="partner-logo">
+                        <svg width="80" height="30" viewBox="0 0 80 30">
+                            <text x="40" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FF5A5F">airbnb</text>
+                        </svg>
+                    </div>
+                    <div class="partner-logo">
+                        <svg width="60" height="30" viewBox="0 0 60 30">
+                            <text x="30" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#006C70">VRBO</text>
+                        </svg>
+                    </div>
+                    <div class="partner-logo">
+                        <svg width="110" height="30" viewBox="0 0 110 30">
+                            <text x="55" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#003580">BOOKING.COM</text>
+                        </svg>
+                    </div>
+                    <div class="partner-logo">
                     <svg width="80" height="30" viewBox="0 0 80 30">
                         <text x="40" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FFC72C">Expedia</text>
-                    </svg>
-                </div>
-                <div class="partner-logo">
-                    <svg width="90" height="30" viewBox="0 0 90 30">
-                        <text x="45" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#BD1E2D">MARRIOTT</text>
-                    </svg>
-                </div>
-                <div class="partner-logo">
+                        </svg>
+                    </div>
+                    <div class="partner-logo">
+                        <svg width="90" height="30" viewBox="0 0 90 30">
+                            <text x="45" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#BD1E2D">MARRIOTT</text>
+                        </svg>
+                    </div>
+                    <div class="partner-logo">
                     <svg width="100" height="30" viewBox="0 0 100 30">
                         <text x="50" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#4285F4">Google Rentals</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
+                        </svg>
+                    </div>
+                    </div>
+                    </div>
     </section>
 
     <!-- Stats Section -->
@@ -1442,22 +1565,22 @@
             <div class="stats-header">
                 <h2>Proven <strong>Results</strong></h2>
                 <p>Real performance metrics from our property portfolio</p>
-            </div>
+                    </div>
             <div class="stats-grid">
                 <div class="stat-card">
                     <span class="stat-number">35%</span>
                     <span class="stat-label">Revenue Increase</span>
-                </div>
+                    </div>
                 <div class="stat-card">
                     <span class="stat-number">4.9</span>
                     <span class="stat-label">Average Rating</span>
-                </div>
+                    </div>
                 <div class="stat-card">
                     <span class="stat-number">87%</span>
                     <span class="stat-label">Occupancy Rate</span>
-                </div>
+                    </div>
                 <div class="stat-card">
-                    <span class="stat-number">500+</span>
+                    <span class="stat-number">200+</span>
                     <span class="stat-label">Properties</span>
                 </div>
             </div>
@@ -1595,41 +1718,41 @@
                 <div class="testimonial-card">
                     <div class="testimonial-content">
                         <p>"Luxury Lodging took my beach house from breaking even to generating <span class="revenue-highlight">$85K annually</span>. Their dynamic pricing and guest service are incredible."</p>
-                    </div>
+                            </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">MR</div>
                         <div class="author-info">
                             <h4>Michael Rodriguez</h4>
                             <p>Miami Beach Property Owner</p>
                         </div>
+                        </div>
                     </div>
-                </div>
-                
+
                 <div class="testimonial-card">
                     <div class="testimonial-content">
                         <p>"Within 6 months, our mountain cabin went from <span class="revenue-highlight">$3,200 to $7,800 monthly</span>. The professional photos and listing optimization made all the difference."</p>
-                    </div>
+                            </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">SJ</div>
                         <div class="author-info">
                             <h4>Sarah Johnson</h4>
                             <p>Aspen Cabin Owner</p>
                         </div>
+                        </div>
                     </div>
-                </div>
-                
+
                 <div class="testimonial-card">
                     <div class="testimonial-content">
                         <p>"I was skeptical about the 20% fee, but when they increased my revenue by <span class="revenue-highlight">190%</span>, it became the best investment I ever made."</p>
-                    </div>
+                            </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">DK</div>
                         <div class="author-info">
                             <h4>David Kim</h4>
                             <p>Luxury Villa Owner</p>
                         </div>
-                    </div>
-                </div>
+                                </div>
+                            </div>
             </div>
         </div>
     </section>
@@ -1649,31 +1772,31 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-main">
-                <div class="footer-brand">
-                    <h3><span>Luxury Lodging</span></h3>
-                    <p>Premium vacation rental management delivering exceptional returns through data-driven strategies and white-glove service.</p>
+                    <div class="footer-brand">
+                        <h3><span>Luxury Lodging</span></h3>
+                        <p>Premium vacation rental management delivering exceptional returns through data-driven strategies and white-glove service.</p>
                     <div class="footer-contact">
                         <div class="contact-item">
                             <div class="contact-icon"></div>
-                            <a href="tel:+1-813-295-7602" class="contact-link">813-295-7602</a>
+                                <a href="tel:+1-813-295-7602" class="contact-link">813-295-7602</a>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"></div>
-                            <a href="mailto:sales@luxurylodgingpm.com" class="contact-link">sales@luxurylodgingpm.com</a>
+                                <a href="mailto:sales@luxurylodgingpm.com" class="contact-link">sales@luxurylodgingpm.com</a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Services</h4>
+                        <h4>Services</h4>
                     <div class="footer-links">
                         <a href="#">Property Management</a>
                         <a href="#">Revenue Optimization</a>
                         <a href="#">Guest Services</a>
                         <a href="#">Marketing</a>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="footer-section">
                     <h4>Company</h4>
                     <div class="footer-links">
@@ -1681,7 +1804,7 @@
                         <a href="#">Careers</a>
                         <a href="#">Privacy Policy</a>
                         <a href="#">Terms of Service</a>
-                    </div>
+                            </div>
                 </div>
             </div>
             
@@ -1718,17 +1841,108 @@
             menu.classList.toggle('active');
         }
 
-        // Form submission
+        // Scroll to form function
+        function scrollToForm() {
+            const form = document.querySelector('.hero-form');
+            if (form) {
+                form.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                // Focus on first input after scroll
+                setTimeout(() => {
+                    const firstInput = form.querySelector('input[type="text"]');
+                    if (firstInput) firstInput.focus();
+                }, 500);
+            }
+        }
+
+                        // Form submission with spam prevention
         document.getElementById('heroForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you! We\'ll send your personalized property analysis within 24 hours.');
+            
+            // Check honeypot field for spam
+            const honeypot = this.querySelector('[name="honeypot"]');
+            if (honeypot && honeypot.value) {
+                alert('Spam detected. Please try again.');
+                return; // Block spam submission
+            }
+            
+            // Check bot detector math question
+            const botCheck = this.querySelector('[name="botCheck"]');
+            if (botCheck && parseInt(botCheck.value) !== 5) {
+                alert('Please answer the math question correctly to prove you\'re human.');
+                botCheck.focus();
+                return; // Block if math is wrong
+            }
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {
+                fullName: formData.get('fullName'),
+                phone: formData.get('phone'),
+                email: formData.get('email') || 'Not provided',
+                bedrooms: formData.get('bedrooms'),
+                timestamp: new Date().toLocaleString()
+            };
+            
+            // Submit to Netlify Forms (works automatically when deployed)
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    'form-name': 'property-analysis',
+                    ...Object.fromEntries(formData)
+                })
+            }).then(() => {
+                alert('Thank you! Your property analysis request has been submitted. We\'ll contact you within 24 hours.');
             this.reset();
+            }).catch(() => {
+                // Fallback: create mailto link
+                const subject = 'New Property Analysis Request';
+                const body = `New lead from website:\n\nName: ${data.fullName}\nPhone: ${data.phone}\nEmail: ${data.email}\nBedrooms: ${data.bedrooms}\nSubmitted: ${data.timestamp}`;
+                const mailtoLink = `mailto:admin@luxurylodgingpm.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                alert('Thank you! Your request has been submitted. We\'ll contact you within 24 hours.');
+                this.reset();
+                
+                // Optional: open email client
+                // window.open(mailtoLink);
+            });
         });
 
-        // Focus hero form
+        // Focus hero form (legacy function - now redirects to scrollToForm)
         function focusHeroForm() {
-            document.querySelector('.hero-form input').focus();
+            scrollToForm();
         }
+
+        // Add click handlers to all CTA buttons and pricing buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get Started buttons in pricing cards
+            document.querySelectorAll('.pricing-cta').forEach(button => {
+                button.addEventListener('click', function(e) {
+                e.preventDefault();
+                    scrollToForm();
+            });
+        });
+
+            // Main CTA button
+            const ctaButton = document.querySelector('.cta-button');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    scrollToForm();
+                });
+            }
+
+            // Any other buttons or CTAs on the page
+            document.querySelectorAll('[class*="btn"]:not(.mobile-menu-btn):not(.form-submit)').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    scrollToForm();
+                });
+            });
+        });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1740,10 +1954,10 @@
                     const targetPosition = target.offsetTop - offset;
                     window.scrollTo({
                         top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+                            behavior: 'smooth'
+                });
+            }
+        });
         });
 
         // Close mobile menu when clicking a link
@@ -1755,4 +1969,5 @@
         });
     </script>
 </body>
+</html>
 </html>
