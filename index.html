@@ -12,6 +12,11 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'AW-16856523214');
+        
+        // Fire page load conversion tracking
+        gtag('event', 'ads_conversion_Contact_Page_load_luxur_1', {
+            // event_parameters
+        });
     </script>
     <style>
         * {
@@ -1866,7 +1871,23 @@
             }
         }
 
-                        // Form submission with spam prevention
+                                // Google Ads conversion tracking function
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof(url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16856523214/NQ36CO05bJ4aBM7D6OU-',
+                'value': 1.0,
+                'currency': 'USD',
+                'event_callback': callback
+            });
+            return false;
+        }
+
+        // Form submission with spam prevention
         document.getElementById('heroForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1895,6 +1916,9 @@
                 timestamp: new Date().toLocaleString()
             };
             
+            // Fire Google Ads conversion tracking
+            gtag_report_conversion();
+            
             // Submit to Netlify Forms (works automatically when deployed)
             fetch('/', {
                 method: 'POST',
@@ -1905,7 +1929,7 @@
                 })
             }).then(() => {
                 alert('Thank you! Your property analysis request has been submitted. We\'ll contact you within 24 hours.');
-            this.reset();
+                this.reset();
             }).catch(() => {
                 // Fallback: create mailto link
                 const subject = 'New Property Analysis Request';
